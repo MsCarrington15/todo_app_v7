@@ -15,6 +15,9 @@ server.listen(PORT, function(){
     mongoose.connect(process.env.ATLAS_URL)
     .then(function(){
         console.log('DB is connected');
+        server.get('/', function(req, res){
+            res.status(200).json({success: true, message: 'wELCOME, this is Sprinkles todo node API'});
+        })
         server.get('/todos', todoController.getAllTodos);
         server.post('/todos',todoController.insertTodo);
         server.get('/todos/:id',todoController.getTodoById);

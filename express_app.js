@@ -2,6 +2,7 @@ require('dotenv').config();
 const express = require('express');   //express is our server
 const mongoose = require('mongoose');    // helps server connects to database thru url path
 const todoController = require('./controllers/todoController');
+const PORT = process.env.PORT || 4000;
 const server = express();
 //const mongo_db_url = ''
         //   const mongodb_db_url="mongodb://localhost/todos_db"                    // url helps connect database
@@ -9,7 +10,7 @@ const server = express();
 server.use(express.json());
 
 
-server.listen(4000, function(){
+server.listen(PORT, function(){
     console.log('Server has started to run in express');
     mongoose.connect(process.env.ATLAS_URL)
     .then(function(){
